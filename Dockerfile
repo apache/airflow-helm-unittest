@@ -1,8 +1,10 @@
-FROM golang:1.14.1-alpine3.11 as ALPINE-BUILDER
-RUN apk --no-cache add --quiet alpine-sdk=1.0-r0
-WORKDIR /go/src/github.com/lrills/helm-unittest/
-COPY . .
-RUN install -d /opt && make install HELM_PLUGIN_DIR=/opt
+FROM alpine:3.12.0
 
-FROM alpine:3.11 as ALPINE
-COPY --from=ALPINE-BUILDER /opt /opt
+ENV HELM_VERSION="v3.1.2"
+
+RUN apk add --no-cache ca-certificates bash git openssh curl \
+    && wget -q https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm \
+    && chmod +x /usr/local/bin/helm \
+    && helm plugin install https://github.com/aneesh-joseph/helm-unittest
+
+CMD bash
