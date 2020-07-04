@@ -24,12 +24,6 @@ ARG HELMUNITTEST_VERSION
 ARG AIRFLOW_HELMUNITTEST_VERSION
 ARG COMMIT_SHA
 
-LABEL org.apache.airflow.component="helm-unittest"
-LABEL org.apache.airflow.airflow_helm_unittest.version="${AIRFLOW_HELMUNITTEST_VERSION}"
-LABEL org.apache.airflow.helm_unittest.version="${HELMUNITTEST_VERSION}"
-LABEL org.apache.airflow.helm.version="${HELM_VERSION}"
-LABEL org.apache.airflow.commit_sha="${COMMIT_SHA}"
-
 COPY plugin.yaml install-binary.sh unittest go.mod main.go /
 
 
@@ -39,4 +33,11 @@ RUN apk add --no-cache ca-certificates bash git openssh curl \
     && chmod +x /usr/local/bin/helm \
     && helm plugin install .
 
+LABEL org.apache.airflow.component="helm-unittest"
+LABEL org.apache.airflow.airflow_helm_unittest.version="${AIRFLOW_HELMUNITTEST_VERSION}"
+LABEL org.apache.airflow.helm_unittest.version="${HELMUNITTEST_VERSION}"
+LABEL org.apache.airflow.helm.version="${HELM_VERSION}"
+LABEL org.apache.airflow.commit_sha="${COMMIT_SHA}"
+
 CMD bash
+
