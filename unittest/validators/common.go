@@ -44,17 +44,17 @@ type Validatable interface {
 
 // splitInfof split multi line string into array of string
 func splitInfof(format string, index int, replacements ...string) []string {
-	intentedFormat := strings.Trim(format, "\t\n ")
-	indentedReplacements := make([]interface{}, len(replacements))
+	intendedFormat := strings.Trim(format, "\t\n ")
+	indendedReplacements := make([]interface{}, len(replacements))
 	for i, r := range replacements {
-		indentedReplacements[i] = "\t" + strings.Trim(
+		indendedReplacements[i] = "\t" + strings.Trim(
 			strings.Replace(r, "\n", "\n\t", -1),
 			"\n\t ",
 		)
 	}
 
 	splittedStrings := strings.Split(
-		fmt.Sprintf(intentedFormat, indentedReplacements...),
+		fmt.Sprintf(intendedFormat, indendedReplacements...),
 		"\n",
 	)
 

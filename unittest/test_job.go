@@ -120,7 +120,7 @@ type TestJob struct {
 		IsUpgrade bool
 	}
 	// route indicate which chart in the dependency hierarchy
-	// like "parant-chart", "parent-charts/charts/child-chart"
+	// like "parent-chart", "parent-charts/charts/child-chart"
 	chartRoute string
 	// where the test suite file located
 	definitionFile string

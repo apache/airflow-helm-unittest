@@ -56,7 +56,7 @@ func assertXUnitTestAssemblies(assert *assert.Assertions, expected, actual []XUn
 			assert.Equal(expected[i].SkippedTests, actual[i].SkippedTests)
 			assert.Equal(expected[i].ErrorsTests, actual[i].ErrorsTests)
 
-			// Validate the tesruns
+			// Validate the testruns
 			assertXUnitTestRun(assert, expected[i].TestRuns, actual[i].TestRuns)
 		}
 	} else {
@@ -118,7 +118,7 @@ func TestWriteTestOutputAsXUnitMinimalSuccess(t *testing.T) {
 	assert := assert.New(t)
 	outputFile := path.Join(tmpXunitTestDir, "XUnit_Test_Output.xml")
 	testSuiteDisplayName := "TestingSuite"
-	testCaseDisplayName := "TestCaseSucces"
+	testCaseDisplayName := "TestCaseSuccess"
 	totalTests := 1
 	totalPassed := 1
 	totalFailed := 0

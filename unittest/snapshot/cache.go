@@ -58,20 +58,20 @@ func (s *Cache) getCached(test string, idx uint) (string, bool) {
 // Compare compare content to cached last time, return CompareResult
 func (s *Cache) Compare(test string, idx uint, content interface{}) *CompareResult {
 	s.currentCount++
-	cached, exsisted := s.getCached(test, idx)
-	if !exsisted {
+	cached, existed := s.getCached(test, idx)
+	if !existed {
 		s.insertedCount++
 	}
 
 	match := true
 	newSnapshot := common.TrustedMarshalYAML(content)
-	if exsisted && newSnapshot != cached {
+	if existed && newSnapshot != cached {
 		match = false
 		s.updatedCount++
 	}
 
 	var snapshotToSave string
-	if s.IsUpdating || !exsisted {
+	if s.IsUpdating || !existed {
 		snapshotToSave = newSnapshot
 	} else {
 		snapshotToSave = cached
