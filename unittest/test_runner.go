@@ -305,7 +305,7 @@ func (tr *TestRunner) printChartHeader(chartName, path string) {
 	tr.Printer.println(header, 0)
 }
 
-// printErroredChartHeader if chart has exexution error print header with error
+// printErroredChartHeader if chart has execution error print header with error
 func (tr *TestRunner) printErroredChartHeader(err error) {
 	headerFormat := `
 ### ` + tr.Printer.danger("Error: ") + ` %s

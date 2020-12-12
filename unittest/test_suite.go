@@ -41,7 +41,7 @@ type TestSuite struct {
 	// where the test suite file located
 	definitionFile string
 	// route indicate which chart in the dependency hierarchy
-	// like "parant-chart", "parent-charts/charts/child-chart"
+	// like "parent-chart", "parent-charts/charts/child-chart"
 	chartRoute string
 }
 
